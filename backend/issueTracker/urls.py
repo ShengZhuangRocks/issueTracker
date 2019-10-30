@@ -1,9 +1,12 @@
-from django.urls import path
+from django.urls import path, re_path
 from . import views
 
 app_name = 'issueTracker'
+
 urlpatterns = [
-    path('', views.ProjectList.as_view(), name='project_list'),
-    path('<project_name>/', views.issues, name='issues'),
-    path('<project_name>/<issue_id>', views.issue, name='issue')
+    path('', views.ProjectList.as_view(), name='projects'),
+    path('<project_name>/issues/', views.issues, name='issues'),
+    re_path(r'<project_name>/create/$', views.create, name='create_new'),
+    path('<project_name>/issue/<int:pk>/', views.issue, name='issue'),
+    path('<project_name>/edit/<int:pk>/', views.edit, name='edit'),
 ]

@@ -99,6 +99,20 @@ body {
     user-select: none;
 }
 
+.b-right {
+    text-align: right;
+}
+
+/* this is not working */
+.done-issue {
+    color: #a9aeb3;
+    text-decoration-line: line-through;
+}
+
+.my-button {
+
+}
+
 @media (min-width: 768px) {
     .bd-placeholder-img-lg {
         font-size: 3.5rem;

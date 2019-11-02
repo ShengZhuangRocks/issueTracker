@@ -1,5 +1,6 @@
 {% load static from staticfiles %}
 
+
 <!doctype html>
 <html lang="en">
 
@@ -9,9 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>Issue Tracker</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/offcanvas/">
+    <title>We got Issues</title>
 
     <!-- bootsrap cdn -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -31,30 +30,100 @@
     </style>
 </head>
 
-<body class="bg-light">
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-        <a class="navbar-brand mr-auto mr-lg-0" href="#">Issue Tracker</a>
+<body class="bg-light pt-0">
+    <header>
+        <!-- callapse part -->
+        <div class="collapse bg-dark" id="navbarHeader">
+            <div class="container">
+                <div class="row side-offset">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white">About</h4>
+                        <p class="text-muted">
+                            This is an issue-tracker|bug-tracker project that I wrote in django. During the building process,
+                            I used the app itself to keep tracks of all issues that I came across and all features that I want
+                            to implement. This process has made me dig deep into Django, the MVC framework, bootstrap.
 
-        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+                        </p>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">Skills</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">Python & Django</a></li>
+                            <li><a href="#" class="text-white">MVC framework</a></li>
+                            <li><a href="#" class="text-white">Bootstrap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-    </nav>
 
-    <div class="nav-scroller bg-white shadow-sm">
-        <nav class="nav nav-underline">
-            <a class="nav-link active" href="{% url 'issueTracker:projects' %}">Projects</a>
-        </nav>
-    </div>
+        <div class="navbar navbar-dark bg-dark shadow-sm ">
+            <div class="container d-flex justify-content-between side-offset">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <i class="fas fa-rocket mr-3"></i>
+                    <strong>HOUSTON, WE GOT ISSUES!</strong>
+                </a>
+                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- white line under -->
+        <div class="nav-scroller bg-white shadow-sm">
+            <nav class="nav nav-underline">
+                <div class="container">
+                    <div class="row d-flex justify-content-between side-offset">
+                        <div class="col-md-6 ">
+                            <a class="nav-link active d-inline-block"
+                                href="{% url 'issueTracker:projects_list' %}">Projects</a>
+                            <a class="nav-link active d-inline-block"
+                                href="{% url 'issueTracker:my_tasks_assigned' %}">Tasks assigned to
+                                me</a>
+                            <a class="nav-link active d-inline-block"
+                                href="{% url 'issueTracker:my_tasks_created' %}">Tasks
+                                created by
+                                me</a>
+                        </div>
+                        <div class="col-md-3 pr-0">
+                            {% if user.is_authenticated %}
+                            <ul>
+                                <li class="nav-item float-right pt-1">
+                                    <form class="logout" action="{% url 'accounts:logout' %}" method="POST">
+                                        {% csrf_token %}
+                                        <button class="btn btn-outline-secondary" type="submit">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                            {% else %}
+                            <div class="float-right pt-1">
+                                <a class="nav-link d-inline-block text-right" href="{% url 'accounts:login' %}">Login</a>
+                                <a class="nav-link d-inline-block text-right" href="{% url 'accounts:signup' %}">Signup</a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+    </header>
+
 
     {% block content %}
     {% endblock %}
+
+    <footer class="text-muted mb-5 pb-5">
+        <div class="container">
+            <p class="float-right">
+                <a href="#">Back to top</a>
+            </p>
+            <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+            <p>New to Bootstrap? <a href="https://getbootstrap.com/">Visit the homepage</a> or read our <a
+                    href="/docs/4.3/getting-started/introduction/">getting started guide</a>.</p>
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -62,6 +131,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
+    <script>
+        window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')
+    </script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"
+        integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous">
+    </script>
+    <script src="https://kit.fontawesome.com/1f3f07b772.js" crossorigin="anonymous"></script>
 
 </body>
 

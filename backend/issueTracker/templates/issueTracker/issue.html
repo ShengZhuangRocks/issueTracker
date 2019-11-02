@@ -8,15 +8,15 @@
     <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
         <div class="lh-100">
             <h5 class="mb-0 text-white lh-100"><a
-                    href="{% url 'issueTracker:issues' issue.project %}">{{ project.project_name }}</a></h6>
+                    href="{% url 'issueTracker:issues' project.slug %}">{{ project.project_name }}</a></h6>
         </div>
     </div>
 
     <div class="my-3 p-3 bg-white rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-0">
             <a 
-            class="btn btn-md btn-primary my-button" 
-            href="{% url 'issueTracker:edit' project.project_name issue.id %}" 
+            class="btn btn-light btn-block" 
+            href="{% url 'issueTracker:edit' project.slug issue.id %}" 
             role="button">Edit</a>
         </h6>
         <div class="media text-muted pt-3">

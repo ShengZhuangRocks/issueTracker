@@ -12,6 +12,7 @@ class Project(models.Model):
         ('AA','androidApp')
     )
     project_type = models.CharField(max_length=2, choices=Pt)
+    slug = models.CharField(max_length=20)
 
     def __str__(self):
         return self.project_name
@@ -36,10 +37,10 @@ class Issues(models.Model):
     # many to many??, issue can have many status, and a status would have many issue
     # but also status options are limited
     stat = (
-        ('TD', 'Todo'),
-        ('IP', 'In progress'),
-        ('IR', 'In review'),
-        ('DN', 'Done')
+        ('1', 'Todo'),
+        ('2', 'In progress'),
+        ('3', 'In review'),
+        ('4', 'Done')
     )
     status = models.CharField(max_length=2, choices=stat)
     # an issue can only have one creator, so still many to one,
@@ -51,13 +52,17 @@ class Issues(models.Model):
         null=True
         )
     prior = (
-        ('HH', 'Highest'),
-        ('H', 'High'),
-        ('M', 'Medium'),
-        ('L', 'Lower'),
-        ('LL', 'Lowest'),
+        ('1', 'Highest'),
+        ('2', 'High'),
+        ('3', 'Medium'),
+        ('4', 'Lower'),
+        ('5', 'Lowest'),
+        ('6', 'Done'),
     )
     priority = models.CharField(max_length=2, choices=prior)
+
+    class Meta:
+        ordering = ['priority', 'status']
 
     def __str__(self):
         return self.title

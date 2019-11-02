@@ -17,11 +17,12 @@ class CreateIssue(forms.ModelForm):
             'assigned_to',
             'priority',
         ]
+        
     
 class CreateProject(forms.ModelForm):
     class Meta:
         model = Project
-        fields = ['project_name','project_type']
+        fields = ['project_name','project_type','slug']
 
 
 

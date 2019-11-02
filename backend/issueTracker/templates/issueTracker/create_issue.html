@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 <!-- {
-"issue":issue,
+'form':form,
 'project':project
 } -->
 {% block content %}
@@ -15,15 +15,15 @@
     <div class="my-3 p-3 bg-white rounded shadow-sm">
         <!-- <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6> -->
         <div class="media text-muted pt-3">
-            <form class="site-form" action="#" method="post" enctype="multipart/form-data">
+            <form class="site-form" action="{% url 'issueTracker:create_issue' project.slug %}" method="post"
+                enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form }}
-                <input type="submit" value="Submit">
+                <table border="0" class="table table-striped">
+                    {{ form }}
+                </table>
+                <input type="submit" value="Create">
             </form>
         </div>
-        <!-- <small class="d-block text-right mt-3">
-            <a href="#">...</a>
-        </small> -->
     </div>
 </main>
 

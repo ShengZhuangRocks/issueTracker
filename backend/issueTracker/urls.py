@@ -4,9 +4,11 @@ from . import views
 app_name = 'issueTracker'
 
 urlpatterns = [
-    path('', views.ProjectList.as_view(), name='projects'),
-    path('<project_name>/issues/', views.issues, name='issues'),
-    re_path(r'<project_name>/create/$', views.create, name='create_new'),
-    path('<project_name>/issue/<int:pk>/', views.issue, name='issue'),
-    path('<project_name>/edit/<int:pk>/', views.edit, name='edit'),
+    path('', views.project_list, name='projects_list'),
+    path('<slug:slug>/issues/', views.issues, name='issues'),
+    path('<slug:slug>/create-issue/', views.create_issue, name='create_issue'),
+    path('<slug:slug>/issue/<int:pk>/', views.issue, name='issue'),
+    path('<slug:slug>/edit/<int:pk>/', views.edit, name='edit'),
+    path('my-tasks_assigned/', views.tasks_assigned_to_me, name='my_tasks_assigned'),
+    path('my-tasks_created/', views.tasks_created_by_me, name='my_tasks_created'),
 ]

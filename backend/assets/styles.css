@@ -109,8 +109,21 @@ body {
     text-decoration-line: line-through;
 }
 
-.my-button {
+.site-form > * {
+    display: block;
+    margin: 20px 0 0px 0;
+    padding: 10px;
+}
 
+.f-right {
+    float:right;
+    position:absolute;
+    right:30px;
+    top:10px;
+}
+
+.side-offset{
+    padding: 0 30px;
 }
 
 @media (min-width: 768px) {

@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Project, Issues
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('project_name', 'project_type')
+    list_display = ('project_name', 'project_type', 'slug')
 
 admin.site.register(Project, ProjectAdmin)
 

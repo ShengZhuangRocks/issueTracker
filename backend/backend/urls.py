@@ -20,14 +20,15 @@ from django.conf.urls.static import static
 from django.urls import path
 from django.urls import include
 from django.views.generic import TemplateView
+from .views import home
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('projects/', include('issueTracker.urls')),
     path('accounts/', include('accounts.urls')),
-    path('', TemplateView.as_view(template_name="home.html")),
-    path('about/', TemplateView.as_view(template_name='about.html')),
+    path('', home),
+    # path('about/', TemplateView.as_view(template_name='about.html')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

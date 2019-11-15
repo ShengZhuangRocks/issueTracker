@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'issueTracker',
     'accounts',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

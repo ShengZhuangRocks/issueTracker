@@ -21,4 +21,18 @@ class IssuesAdmin(admin.ModelAdmin):
         'priority'
     )
 
+    # def save_model(self, request, instance, form):
+    #     user = request.user
+    #     instance = form.save(commit=False)
+    #     if not instance.created_by:
+    #         instance.created_by=user
+    #     instance.save()
+    #     return instance
+
+    # def save_model(self, request, obj, form, change):
+    #     obj.created_by = request.user
+    #     super(IssuesAdmin, self).save_model(request, obj, form, change)
+        
+
 admin.site.register(Issues, IssuesAdmin)
+

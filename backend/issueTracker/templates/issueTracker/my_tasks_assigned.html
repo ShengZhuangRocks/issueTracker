@@ -14,7 +14,7 @@
     {% for project in projects %}
     <div class="my-3 p-3 bg-white rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-0">
-            {{project.project_name}}
+            <a href="{% url 'issueTracker:issues' project.slug %}">{{project.project_name}}</a>
         </h6>
         {% for issue in issues %}
             {% if issue.project == project %}

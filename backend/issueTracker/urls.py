@@ -11,4 +11,5 @@ urlpatterns = [
     path('<slug:slug>/edit/<int:pk>/', views.edit, name='edit'),
     path('my-tasks_assigned/', views.tasks_assigned_to_me, name='my_tasks_assigned'),
     path('my-tasks_created/', views.tasks_created_by_me, name='my_tasks_created'),
+    path('all_todo/', views.all_todo, name='all_todo'),
 ]

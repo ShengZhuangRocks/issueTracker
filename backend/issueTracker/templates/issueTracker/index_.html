@@ -4,7 +4,7 @@
 {% block content %}
 <main role="main" class="container mt-5">
     {% for counter in projects|counters %}
-    <div class="container">
+
         {% with project=projects|index:counter %}
 
         <!-- project header -->
@@ -13,10 +13,10 @@
                 <h1 class="jumbotron-heading">
                     <a href="{% url 'issueTracker:issues' project.slug %}">{{project.project_name}}</a>
                 </h1>
-                <p class="lead text-muted">project sunmmary -- Something short and leading about the collection
-                    below—its
-                    contents, the creator,
-                    etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+                <p class="lead text-muted">project sunmmary -- This is an issue-tracker|bug-tracker project that I wrote
+                    in django. During the building process, I used the app itself to keep tracks of all issues that I
+                    came across and all features that I want to implement. This process has made me dig deep into
+                    Django, the MVC framework, bootstrap.</p>
                 <div class="">
                     <a href="{% url 'issueTracker:issues' project.slug %}" class="btn btn-primary my-2">Go to
                         project</a>
@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-           
+
             <div class="album py-5">
                 <div class="container">
                     <div class="row">
@@ -47,10 +47,10 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                             <a href="{% url 'issueTracker:issue' project.slug issue.id %}"
-                                            class="btn btn-sm btn-outline-secondary">View</a>
+                                                class="btn btn-sm btn-outline-secondary">View</a>
 
-                                            <a href="{% url 'issueTracker:create_issue' project.slug %}" 
-                                            class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            <a href="{% url 'issueTracker:edit' project.slug issue.id %}"
+                                                class="btn btn-sm btn-outline-secondary">Edit</a>
                                         </div>
                                         <small class="text-muted">{{issue.created_date}}</small>
                                     </div>
@@ -66,7 +66,7 @@
                 </div>
             </div>
         </section>
-    </div>
+
     {% endfor %}
 </main>
 

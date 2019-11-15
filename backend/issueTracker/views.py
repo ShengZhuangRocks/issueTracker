@@ -6,15 +6,6 @@ from .forms import CreateIssue, CreateProject
 from django.contrib.auth.models import User
 
 
-# Create your views here.
-# class ProjectList(generic.ListView):
-#     template_name = 'issueTracker/index.html'
-#     context_object_name = 'projects'
-
-#     def get_queryset(self):
-#         return  Project.objects.all()
-
-
 def project_list(request):
     projects = Project.objects.all()
     issues = []
@@ -91,7 +82,19 @@ def tasks_created_by_me(request):
     current_user = request.user
     if request.user.is_authenticated:
         issues = Issues.objects.filter(created_by=current_user)
-        return render(request, "issueTracker/my_tasks_assigned.html", {
+        return render(request, "issueTracker/my_tasks_created.html", {
+            "projects":projects,
+            'issues':issues
+            })
+    return redirect("accounts:login")
+
+
+def all_todo(request):
+    projects = Project.objects.all()
+    current_user = request.user
+    if request.user.is_authenticated:
+        issues = Issues.objects.filter(created_by=current_user, status = '1')
+        return render(request, "issueTracker/all_todo.html", {
             "projects":projects,
             'issues':issues
             })
